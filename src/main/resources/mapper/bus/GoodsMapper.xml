@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ethan.bus.mapper.GoodsMapper">
+    <!--根据物资id删除物资入库信息-->
+   <delete id="deleteInportByGoodsId" >
+       delete from bus_inport where goodsid = #{goodsid}
+   </delete>
+
+    <!-- 根据物资id删除物资出库信息 -->
+    <delete id="deleteOutportByGoodsId">
+        delete from bus_outport where goodsid = #{goodsid}
+    </delete>
+
+    <!--查询所有库存预警物资-->
+    <select id="loadAllWarning" resultType="com.ethan.bus.entity.Goods">
+        select * from bus_goods where dangernum > number
+    </select>
+</mapper>
